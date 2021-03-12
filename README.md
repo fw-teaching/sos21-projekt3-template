@@ -1,1 +1,1 @@
-## Kursprojekt Android Studio
+## Projekt 3 - Glidande medelvärde
