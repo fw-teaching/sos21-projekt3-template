@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         /* Använd currencyValues för att bygga upp grafen   */
         currencyValues = getCurrencyValues();
+
+        System.out.println(currencyValues.toString());
     }
 
 
@@ -32,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
         CurrencyApi api = new CurrencyApi();
         ArrayList<Double> currencyData = null;
 
+        // Funkar inte längre utan inloggning: String urlString = "https://api.exchangeratesapi.io/history?start_at=%s&end_at=%s&symbols=%s";
+        String urlString = String.format("https://api.exchangerate.host/timeseries?start_date=%s&end_date=%s&symbols=%s",
+                from.trim(),
+                to.trim(),
+                currency.trim());
+
         try {
-            String jsonData = api.execute(String.format("https://api.exchangeratesapi.io/history?start_at=%s&end_at=%s&symbols=%s",
-                    from.trim(),
-                    to.trim(),
-                    currency.trim()
-            )).get();
+            String jsonData = api.execute(urlString).get();
 
             if (jsonData != null) {
                 currencyData = api.getCurrencyData(jsonData, currency.trim());

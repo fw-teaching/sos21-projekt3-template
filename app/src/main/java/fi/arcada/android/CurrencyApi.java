@@ -54,7 +54,7 @@ public class CurrencyApi extends AsyncTask<String, Void, String> {
             for (int i = 0; i < entries.size(); i++) {
                 String rate = jsonObjRates.getJSONObject(entries.get(i)).getString(currency);
                 rateValues.add(Double.parseDouble(rate));
-                System.out.println(entries.get(i) + " : " + rateValues.get(i));
+                //System.out.println(entries.get(i) + " : " + rateValues.get(i));
             }
         } catch (Exception e) {
             System.out.println("ERROR getCurrencyData: " + e.getMessage());
